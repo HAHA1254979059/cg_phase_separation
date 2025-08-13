@@ -1,0 +1,55 @@
+; Simulated annealing for PVCN/PTB7‑Th blend
+; This MD run heats the polymer blend to a high temperature and then cools
+; it down to 300 K.  The annealing schedule is specified via the
+; `annealing` keywords described in the GROMACS manual【169193623196331†L1584-L1643】.
+
+integrator        = md
+dt                = 0.002           ; 2 fs time step
+nsteps            = 500000          ; 1 ns total simulation
+
+; generate velocities at 300 K
+gen-vel           = yes
+gen-temp          = 300【169193623196331†L1656-L1664】
+gen-seed          = -1【169193623196331†L1665-L1669】
+
+; thermostat
+tcoupl            = v-rescale
+tc-grps           = System
+tau_t             = 1.0
+ref_t             = 300
+
+; pressure coupling – anisotropic barostat to allow box adjustment
+pcoupl            = berendsen
+pcoupltype        = isotropic
+tau_p             = 5.0
+ref_p             = 1.0
+compressibility   = 4.5e-5
+
+; neighbour list and cut‑offs
+cutoff-scheme     = verlet
+rlist             = 1.2
+rcoulomb          = 1.2
+rvdw              = 1.2
+coulombtype       = PME
+vdwtype           = cutoff
+pbc               = xyz
+
+; constraints
+constraints       = h-bonds【169193623196331†L1670-L1698】
+constraint-algorithm= lincs
+lincs-order       = 4
+lincs-iter        = 1
+
+; Simulated annealing settings
+annealing         = single         ; apply a single annealing sequence【169193623196331†L1584-L1643】
+annealing-npoints = 3             ; start, high‑T plateau, end
+annealing-time    = 0 500 1000    ; times (ps) when the reference temperature is defined
+annealing-temp    = 300 1200 300  ; corresponding temperatures (K)
+
+; output control
+nstxout           = 0
+nstvout           = 0
+nstfout           = 0
+nstxout-compressed= 1000          ; write coordinates every 2 ps
+nstenergy         = 1000
+nstlog            = 1000
