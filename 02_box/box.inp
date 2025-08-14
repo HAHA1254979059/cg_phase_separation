@@ -3,9 +3,9 @@ add_box_sides 1.2
 output box2.pdb
 structure ..\01_single_molecule\PVCN_decamer.pdb
 	number 30
-	inside cube 0. 0. 0. 50.
+	inside cube 0. 0. 0. 80.
 end structure
 structure ..\01_single_molecule\PTB7-Th_tetramer.pdb
 	number 30
-	inside cube 0. 0. 0. 50.
+	inside cube 0. 0. 0. 80.
 end structure

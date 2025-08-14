@@ -2,7 +2,7 @@
 ; Purpose: soft-core VdW only (electrostatics unchanged)
 ; Use case: gentle overlap relaxation by turning on LJ gradually
 
-integrator              = sd            ; stochastic dynamics (silences NOTE 1)
+integrator              = steep            ; stochastic dynamics (silences NOTE 1)
 dt                      = 0.001         ; 1 fs
 nsteps                  = 50000         ; 50 ps total, adjust as needed
 ld-seed                 = 123456        ; RNG for SD
@@ -26,15 +26,7 @@ rlist                   = 1.4
 pbc                     = xyz
 
 ; Constraints
-constraints             = h-bonds
-constraint-algorithm    = lincs
-lincs-iter              = 1
-lincs-order             = 4
-
-tcoupl                  = Nose-Hoover
-tc-grps                 = System
-tau_t                   = 0.5
-ref_t                   = 298
+constraints             = none
 
 ; -------- Free energy (soft-core) block --------
 free-energy             = yes
