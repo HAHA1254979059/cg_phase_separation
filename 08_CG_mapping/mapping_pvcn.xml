@@ -1,0 +1,243 @@
+
+<!-- ========== Molecule 1: PVCN_decamer (MOLA) ========== -->
+<cg_molecule>
+  <name>PVCN_decamer</name>     <!-- CG molecule name (you can choose freely for CG) -->
+  <ident>MOLA</ident>           <!-- All-atom molecule identifier (must match .tpr/.gro) -->
+
+  <topology>
+    <cg_beads>
+      <!-- Head bead (first repeat unit) -->
+      <cg_bead>
+        <name>A1</name>
+        <type>A</type>                 <!-- Bead type used for NB/Bonded type definitions -->
+        <mapping>com_A</mapping>       <!-- Map name; defined under <maps> -->
+        <beads>
+          <!-- Fill with atoms of the first (head) repeat unit -->
+          <!-- Example form (replace with your actual atom names/numbers): -->
+			1:MOLA:C1 1:MOLA:C2 1:MOLA:C3 1:MOLA:C4 1:MOLA:C5 1:MOLA:C6 1:MOLA:C12 1:MOLA:C14 1:MOLA:C16
+			1:MOLA:C19 1:MOLA:C22 1:MOLA:O17 1:MOLA:O18 1:MOLA:H7 1:MOLA:H8 1:MOLA:H9 1:MOLA:H10 1:MOLA:H11
+			1:MOLA:H13 1:MOLA:H15 1:MOLA:H20 1:MOLA:H21 1:MOLA:H23 1:MOLA:H24
+        </beads>
+      </cg_bead>
+
+      <!-- Middle beads (repeat units 2..9) -->
+      <cg_bead>
+        <name>B2</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #2 -->
+			1:MOLA:C25 1:MOLA:C27 1:MOLA:C29 1:MOLA:C32 1:MOLA:C34 1:MOLA:C36 1:MOLA:C38 1:MOLA:C39
+			1:MOLA:C40 1:MOLA:C42 1:MOLA:C44 1:MOLA:O26 1:MOLA:O33 1:MOLA:H28 1:MOLA:H30 1:MOLA:H31 
+			1:MOLA:H35 1:MOLA:H37 1:MOLA:H41 1:MOLA:H43 1:MOLA:H45 1:MOLA:H46 1:MOLA:H47
+        </beads>
+      </cg_bead>
+
+      <cg_bead>
+        <name>B3</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #3 -->
+			1:MOLA:C48 1:MOLA:C50 1:MOLA:C52 1:MOLA:C55 1:MOLA:C57 1:MOLA:C59 1:MOLA:C61 1:MOLA:C62
+			1:MOLA:C63 1:MOLA:C65 1:MOLA:C67 1:MOLA:O49 1:MOLA:O56 1:MOLA:H51 1:MOLA:H53 1:MOLA:H54
+			1:MOLA:H58 1:MOLA:H60 1:MOLA:H64 1:MOLA:H66 1:MOLA:H68 1:MOLA:H69 1:MOLA:H70
+        </beads>
+      </cg_bead>
+
+      <cg_bead>
+        <name>B4</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #4 -->
+			1:MOLA:C71 1:MOLA:C73 1:MOLA:C75 1:MOLA:C78 1:MOLA:C80 1:MOLA:C82 1:MOLA:C84 1:MOLA:C85
+			1:MOLA:C86 1:MOLA:C88 1:MOLA:C90 1:MOLA:O72 1:MOLA:O79 1:MOLA:H74 1:MOLA:H76 1:MOLA:H77
+			1:MOLA:H81 1:MOLA:H83 1:MOLA:H87 1:MOLA:H89 1:MOLA:H91 1:MOLA:H92 1:MOLA:H93
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B5</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #5 -->
+			1:MOLA:C94 1:MOLA:C96 1:MOLA:C98 1:MOLA:C101 1:MOLA:C103 1:MOLA:C105 1:MOLA:C107 1:MOLA:C108
+			1:MOLA:C109 1:MOLA:C111 1:MOLA:C113 1:MOLA:O95 1:MOLA:O102 1:MOLA:H97 1:MOLA:H99 1:MOLA:H100
+			1:MOLA:H104 1:MOLA:H106 1:MOLA:H110 1:MOLA:H112 1:MOLA:H114 1:MOLA:H115 1:MOLA:H116
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B6</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #6 -->
+			1:MOLA:C117 1:MOLA:C119 1:MOLA:C121 1:MOLA:C124 1:MOLA:C126 1:MOLA:C128 1:MOLA:C130 1:MOLA:C131
+			1:MOLA:C132 1:MOLA:C134 1:MOLA:C136 1:MOLA:O118 1:MOLA:O125 1:MOLA:H120 1:MOLA:H122 1:MOLA:H123
+			1:MOLA:H127 1:MOLA:H129 1:MOLA:H133 1:MOLA:H135 1:MOLA:H137 1:MOLA:H138 1:MOLA:H139
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B7</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #7 -->
+			1:MOLA:C140 1:MOLA:C142 1:MOLA:C144 1:MOLA:C147 1:MOLA:C149 1:MOLA:C151 1:MOLA:C153 1:MOLA:C154
+			1:MOLA:C155 1:MOLA:C157 1:MOLA:C159 1:MOLA:O141 1:MOLA:O148 1:MOLA:H143 1:MOLA:H145 1:MOLA:H146
+			1:MOLA:H150 1:MOLA:H152 1:MOLA:H156 1:MOLA:H158 1:MOLA:H160 1:MOLA:H161 1:MOLA:H162
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B8</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #8 -->
+			1:MOLA:C163 1:MOLA:C165 1:MOLA:C167 1:MOLA:C170 1:MOLA:C172 1:MOLA:C174 1:MOLA:C176 1:MOLA:C177
+			1:MOLA:C178 1:MOLA:C180 1:MOLA:C182 1:MOLA:O164 1:MOLA:O171 1:MOLA:H166 1:MOLA:H168 1:MOLA:H169
+			1:MOLA:H173 1:MOLA:H175 1:MOLA:H179 1:MOLA:H181 1:MOLA:H183 1:MOLA:H184 1:MOLA:H185
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B9</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #9 -->
+			1:MOLA:C186 1:MOLA:C188 1:MOLA:C190 1:MOLA:C193 1:MOLA:C195 1:MOLA:C197 1:MOLA:C199 1:MOLA:C200
+			1:MOLA:C201 1:MOLA:C203 1:MOLA:C205 1:MOLA:O187 1:MOLA:O194 1:MOLA:H189 1:MOLA:H191 1:MOLA:H192
+			1:MOLA:H196 1:MOLA:H198 1:MOLA:H202 1:MOLA:H204 1:MOLA:H206 1:MOLA:H207 1:MOLA:H208
+        </beads>
+      </cg_bead>
+
+      <!-- Tail bead (repeat unit 10) -->
+      <cg_bead>
+        <name>C10</name>
+        <type>C</type>
+        <mapping>com_C</mapping>
+        <beads>
+          <!-- All atoms of last (tail) repeat unit -->
+			1:MOLA:C209 1:MOLA:C211 1:MOLA:C213 1:MOLA:C217 1:MOLA:C219 1:MOLA:C221 1:MOLA:C223 1:MOLA:C224
+			1:MOLA:C225 1:MOLA:C227 1:MOLA:C229 1:MOLA:O210 1:MOLA:O218 1:MOLA:H212 1:MOLA:H214 1:MOLA:H215
+			1:MOLA:H216 1:MOLA:H220 1:MOLA:H222 1:MOLA:H226 1:MOLA:H228 1:MOLA:H230 1:MOLA:H231 1:MOLA:H232
+        </beads>
+      </cg_bead>
+    </cg_beads>
+
+    <!-- Non-bonded pairs INSIDE the same molecule type (MOLA). 
+         r-range in nm; tune max/step to your cutoff/accuracy needs. -->
+    <non-bonded>
+      <name>NB_AA</name><type1>A</type1><type2>A</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_AB</name><type1>A</type1><type2>B</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_BB</name><type1>B</type1><type2>B</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_BC</name><type1>B</type1><type2>C</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_AC</name><type1>A</type1><type2>C</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+
+    <!-- Bonded topology INSIDE MOLA -->
+    <cg_bonded>
+      <!-- End bonds -->
+      <bond>
+        <name>bond_head_end</name>
+        <beads>
+          A1 B2
+          B9 C10
+        </beads>
+      </bond>
+
+      <!-- Internal chain bonds -->
+      <bond>
+        <name>bond_chain</name>
+        <beads>
+          B2 B3
+          B3 B4
+          B4 B5
+          B5 B6
+          B6 B7
+          B7 B8
+          B8 B9
+        </beads>
+      </bond>
+
+      <!-- End angles -->
+      <angle>
+        <name>angle_head_end</name>
+        <beads>
+          A1 B2 B3
+          B8 B9 C10
+        </beads>
+      </angle>
+
+      <!-- Internal chain angles -->
+      <angle>
+        <name>angle_chain</name>
+        <beads>
+          B2 B3 B4
+          B3 B4 B5
+          B4 B5 B6
+          B5 B6 B7
+          B6 B7 B8
+          B7 B8 B9
+        </beads>
+      </angle>
+
+      <!-- End dihedrals -->
+      <dihedral>
+        <name>dihedral_head_end</name>
+        <beads>
+          A1 B2 B3 B4
+          B7 B8 B9 C10
+        </beads>
+      </dihedral>
+
+      <!-- Internal chain dihedrals -->
+      <dihedral>
+        <name>dihedral_chain</name>
+        <beads>
+          B2 B3 B4 B5
+          B3 B4 B5 B6
+          B4 B5 B6 B7
+          B5 B6 B7 B8
+          B6 B7 B8 B9
+        </beads>
+      </dihedral>
+    </cg_bonded>
+  </topology>
+
+  <!-- Maps for MOLA (PVCN). For COM, use atomic masses in the same order as in <beads>. -->
+  <maps>
+    <map>
+      <name>com_A</name>
+      <!-- Replace with actual masses of the atoms listed in A1 <beads> -->
+      <weights>12 12 12 12 12 12 12 12 12 12 12 16 16 1 1 1 1 1 1 1 1 1 1 1</weights>
+    </map>
+    <map>
+      <name>com_B</name>
+      <weights>12 12 12 12 12 12 12 12 12 12 12 16 16 1 1 1 1 1 1 1 1 1 1</weights>
+    </map>
+    <map>
+      <name>com_C</name>
+      <weights>12 12 12 12 12 12 12 12 12 12 12 16 16 1 1 1 1 1 1 1 1 1 1 1</weights>
+    </map>
+  </maps>
+</cg_molecule>
