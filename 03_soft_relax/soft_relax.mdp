@@ -1,66 +1,58 @@
-; NVT soft‑core relaxation for PVCN/PTB7‑Th blend
-; This short MD run gradually turns on non‑bonded interactions to allow
-; overlapping atoms from the packing step to move apart without large
-; forces.  The free‑energy soft‑core parameters are adapted from the
-; GROMACS manual.  The integrator is a standard leap‑frog MD with a
-; relatively small time step.  Velocities are generated at 300 K and
-; the system is coupled to a stochastic thermostat.
+; ---------- soft_relax_vdw_only.mdp ----------
+; Purpose: soft-core VdW only (electrostatics unchanged)
+; Use case: gentle overlap relaxation by turning on LJ gradually
 
-integrator          = md              ; leap–frog MD integrator
-dt                  = 0.001           ; time step (ps)
-nsteps              = 50000           ; 50 ps relaxation
+integrator              = sd            ; stochastic dynamics (silences NOTE 1)
+dt                      = 0.001         ; 1 fs
+nsteps                  = 50000         ; 50 ps total, adjust as needed
+ld-seed                 = 123456        ; RNG for SD
+bd-fric                 = 1.0           ; friction (ps^-1), mild damping
 
-; generate velocities from Maxwell distribution at 300 K
-gen-vel             = yes            ; assign velocities
-gen-temp            = 300            ; temperature for initial velocities (K)【169193623196331†L1656-L1664】
-gen-seed            = -1             ; random seed (−1 = random)【169193623196331†L1665-L1669】
+; Output control
+nstxout                 = 0
+nstvout                 = 0
+nstfout                 = 0
+nstlog                  = 500
+nstenergy               = 500
+nstxout-compressed      = 2000
 
-; temperature coupling
-tcoupl              = v-rescale       ; stochastic velocity rescaling thermostat
-tc-grps             = System
-tau_t               = 0.5             ; thermostat time constant (ps)
-ref_t               = 300             ; reference temperature (K)
+; PME / cutoffs (typical polymer settings, tune to your system)
+cutoff-scheme           = Verlet
+coulombtype             = PME
+rcoulomb                = 1.2
+vdwtype                 = Cut-off
+rvdw                    = 1.2
+rlist                   = 1.2
+pbc                     = xyz
 
-; no pressure coupling – constant volume
-pcoupl              = no
+; Constraints
+constraints             = h-bonds
+constraint-algorithm    = lincs
+lincs-iter              = 1
+lincs-order             = 4
 
-; soft‑core free energy settings – gradually turn on LJ and Coulomb
-free-energy         = yes
-couple-moltype      = System          ; scale interactions for the entire system
-couple-lambda0      = vdw-q           ; turn off LJ and electrostatics at lambda=0
-couple-lambda1      = none            ; fully on at lambda=1
-couple-intramol     = no              ; do not scale intramolecular interactions
+tcoupl                  = Nose-Hoover
+tc-grps                 = System
+tau_t                   = 0.5
+ref_t                   = 298
 
-; define the lambda schedule – 11 equally spaced values between 0 and 1
-init-lambda-state   = 0
-vdw-lambdas         = 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
-coul-lambdas        = 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+; -------- Free energy (soft-core) block --------
+free-energy             = yes
+init-lambda-state       = 0
+nstdhdl                 = 50
+nstcalcenergy           = 50            ; keep equal to nstdhdl to avoid NOTE 2
 
-; soft‑core parameters
-sc-alpha            = 0.5             ; soft‑core exponent【169193623196331†L1584-L1643】
-sc-power            = 1               ; soft‑core power
-sc-sigma            = 0.3             ; soft‑core sigma (nm)
+; Soft-core parameters (safe defaults)
+sc-alpha                = 0.5
+sc-power                = 1
+sc-r-power              = 6
+sc-sigma                = 0.3
+sc-coul                 = no            ; ONLY soften VdW
 
-; neighbour list and cut‑offs
-cutoff-scheme       = verlet
-rlist               = 1.2
-rcoulomb            = 1.2
-rvdw                = 1.2
-coulombtype         = PME
-vdwtype             = cutoff
+; Lambda schedule (11 states: 0.0 -> 1.0)
+vdw-lambdas             = 0.00 0.10 0.20 0.30 0.40 0.50 0.60 0.70 0.80 0.90 1.00
+coul-lambdas            = 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00
 
-; constraints – constrain bonds containing hydrogens
-constraints         = h-bonds【169193623196331†L1670-L1698】
-constraint-algorithm= lincs
-lincs-order         = 4               ; increase accuracy for polymer systems【169193623196331†L1700-L1713】
-lincs-iter          = 1
-
-; output control
-nstxout             = 0               ; do not write uncompressed coordinates
-nstvout             = 0
-nstfout             = 0
-nstxout-compressed  = 500             ; write compressed coordinates every 0.5 ps
-nstenergy           = 500             ; write energies every 0.5 ps
-nstlog              = 500             ; log file output frequency
-
-pbc                 = xyz
+; Notes:
+; - Run each state separately (mdrun -multi 11) OR pick one intermediate state (e.g., init-lambda-state=5)
+;   for a single short relaxation, then proceed to normal MD.
