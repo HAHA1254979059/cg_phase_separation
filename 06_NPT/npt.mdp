@@ -1,0 +1,57 @@
+; ====== RUN CONTROL ======
+integrator              = md
+dt                      = 0.001           
+
+; ====== OUTPUT CONTROL ======
+nstxout-compressed      = 5000
+nstvout                 = 0
+nstenergy               = 1000
+nstlog                  = 1000
+nstcalcenergy           = 100
+
+; ====== NEIGHBORSEARCHING & CUT-OFFS ======
+cutoff-scheme           = Verlet
+nstlist                 = 20
+ns_type                 = grid
+rlist                   = 1.2
+rcoulomb                = 1.2
+rvdw                    = 1.2
+
+; ====== ELECTROSTATICS ======
+coulombtype             = PME
+pme-order               = 4
+fourierspacing          = 0.12
+
+; ====== BONDED / CONSTRAINTS ======
+constraints             = h-bonds
+constraint_algorithm    = lincs
+lincs_iter              = 1
+lincs_order             = 4
+
+; ====== TEMPERATURE COUPLING ======
+tcoupl                  = V-rescale
+tc-grps                 = System
+tau_t                   = 1.0
+ref_t                   = 300             
+
+; ====== PRESSURE COUPLING (NPT) ======
+pcoupl                  = berendsen       
+pcoupltype              = isotropic
+tau_p                   = 4.0
+ref_p                   = 1.0
+compressibility         = 4.5e-5          
+
+; ====== VELOCITY GENERATION ======
+gen_vel                 = yes             
+gen_temp                = 300
+gen_seed                = -1
+
+; ====== DISPERSION CORRECTION ======
+DispCorr                = EnerPres
+
+; ====== PERIODIC BOUNDARY CONDITIONS ======
+pbc                     = xyz
+
+; ====== CENTER-OF-MASS MOTION REMOVAL ======
+comm-mode               = Linear
+comm-grps               = System

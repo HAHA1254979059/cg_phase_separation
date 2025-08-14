@@ -2,11 +2,11 @@
 ; This .mdp file performs a steepest–descent energy minimization to relieve
 ; bad atomic contacts before running dynamics.  According to the GROMACS
 ; manual, the minimization stops when the maximum force on any atom
-; is below the tolerance emtol【169193623196331†L763-L774】.
+; is below the tolerance emtol.
 
 integrator      = steep           ; use steepest descent minimizer
 nsteps          = 50000           ; maximum number of minimization steps
-emtol           = 1000.0          ; stop minimization when max force < 1000 kJ mol⁻¹ nm⁻¹【169193623196331†L763-L774】
+emtol           = 100.0          ; stop minimization when max force < 1000 kJ mol⁻¹ nm⁻¹
 emstep          = 0.01            ; initial step size (nm)
 
 ; neighbour list and cut‑offs
@@ -16,7 +16,7 @@ rlist           = 1.2             ; neighbour list cut‑off (nm)
 rcoulomb        = 1.2             ; Coulomb cut‑off (nm)
 rvdw            = 1.2             ; van der Waals cut‑off (nm)
 coulombtype     = PME             ; particle mesh Ewald for long‑range electrostatics
-vdwtype         = cutoff          ; simple Lennard‑Jones cut‑off
+vdwtype         = Cut-off          ; simple Lennard‑Jones cut‑off
 
 ; constraints – no constraints during minimization
 constraints     = none

@@ -1,0 +1,47 @@
+; ---------- nvt_preheat.mdp ----------
+; Purpose: short NVT preheat after soft-core relax + EM
+; Rationale: stabilize velocities at fixed volume before turning on barostat
+
+; ====== RUN CONTROL ======
+integrator              = sd
+dt                      = 0.0005          ; 0.5 fs
+nsteps                  = 100000         ; 50 ps (extend if needed)
+
+; ====== OUTPUT CONTROL ======
+nstxout-compressed      = 1000           ; write coords every 1 ps
+nstvout                 = 0
+nstenergy               = 100            ; energies every 0.1 ps
+nstlog                  = 100            ; log every 0.1 ps
+nstcalcenergy           = 100
+
+; ====== NEIGHBORSEARCHING & CUT-OFFS ======
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.2
+coulombtype             = PME
+rcoulomb                = 1.2
+vdwtype                 = Cut-off
+rvdw                    = 1.2
+
+; ====== TEMPERATURE COUPLING ======
+tcoupl                  = no
+tc-grps                 = System
+tau-t                   = 1.0
+ref-t                   = 300
+
+; ====== PRESSURE COUPLING (OFF for NVT) ======
+pcoupl                  = no
+
+; ====== BONDED / CONSTRAINTS ======
+constraints             = none
+
+; ====== MISC ======
+DispCorr                = EnerPres       ; dispersion correction with cut-off
+pbc                     = xyz
+comm-mode               = Linear
+comm-grps               = System
+
+; ====== VELOCITY GENERATION ======
+gen_vel                 = yes            ; set to 'no' if continuing from a checkpoint
+gen_temp                = 200
+gen_seed                = -1
