@@ -1,55 +1,61 @@
-; Simulated annealing for PVCN/PTB7‑Th blend
-; This MD run heats the polymer blend to a high temperature and then cools
-; it down to 300 K.  The annealing schedule is specified via the
-; `annealing` keywords described in the GROMACS manual【169193623196331†L1584-L1643】.
+; --- annealing_npt_ber.mdp ---
+; Purpose: Berendsen NPT simulated annealing for PVCN/PTB7-Th blend
 
-integrator        = md
-dt                = 0.002           ; 2 fs time step
-nsteps            = 500000          ; 1 ns total simulation
+; RUN CONTROL
+integrator              = md
+dt                      = 0.001          ; 1 fs
+nsteps                  = 1000000        ; 1000 ps total
 
-; generate velocities at 300 K
-gen-vel           = yes
-gen-temp          = 300【169193623196331†L1656-L1664】
-gen-seed          = -1【169193623196331†L1665-L1669】
+; CONTINUE FROM PREVIOUS NPT (DO NOT regenerate velocities)
+gen_vel                 = no             ; continue from checkpoint
+gen_temp                = 300
+gen_seed                = -1
 
-; thermostat
-tcoupl            = v-rescale
-tc-grps           = System
-tau_t             = 1.0
-ref_t             = 300
+; THERMOSTAT (annealing schedule overrides ref_t over time)
+tcoupl                  = V-rescale
+tc-grps                 = System
+tau-t                   = 1.0
+ref-t                   = 300
 
-; pressure coupling – anisotropic barostat to allow box adjustment
-pcoupl            = berendsen
-pcoupltype        = isotropic
-tau_p             = 5.0
-ref_p             = 1.0
-compressibility   = 4.5e-5
+; BAROSTAT (Berendsen: robust during annealing)
+pcoupl                  = Berendsen
+pcoupltype              = isotropic
+tau-p                   = 8.0            ; slower scaling reduces box ringing
+ref-p                   = 1.0
+compressibility         = 4.5e-5
 
-; neighbour list and cut‑offs
-cutoff-scheme     = verlet
-rlist             = 1.2
-rcoulomb          = 1.2
-rvdw              = 1.2
-coulombtype       = PME
-vdwtype           = cutoff
-pbc               = xyz
+; NEIGHBOR / PME / CUTOFFS
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.2
+coulombtype             = PME
+rcoulomb                = 1.2
+vdwtype                 = Cut-off
+rvdw                    = 1.2
+verlet-buffer-tolerance = 0.001
 
-; constraints
-constraints       = h-bonds【169193623196331†L1670-L1698】
-constraint-algorithm= lincs
-lincs-order       = 4
-lincs-iter        = 1
+; CONSTRAINTS (slightly stronger than default for robustness)
+constraints             = h-bonds
+constraint-algorithm    = lincs
+lincs-iter              = 2
+lincs-order             = 8
 
-; Simulated annealing settings
-annealing         = single         ; apply a single annealing sequence【169193623196331†L1584-L1643】
-annealing-npoints = 3             ; start, high‑T plateau, end
-annealing-time    = 0 500 1000    ; times (ps) when the reference temperature is defined
-annealing-temp    = 300 1200 300  ; corresponding temperatures (K)
+; SIMULATED ANNEALING (ps / K)
+annealing               = single
+annealing-npoints       = 5
+annealing-time          = 0 300 700 800 1000
+annealing-temp          = 300 1200 1200 300 300
 
-; output control
-nstxout           = 0
-nstvout           = 0
-nstfout           = 0
-nstxout-compressed= 1000          ; write coordinates every 2 ps
-nstenergy         = 1000
-nstlog            = 1000
+; OUTPUT
+nstxout                 = 0
+nstvout                 = 0
+nstfout                 = 0
+nstxout-compressed      = 100            ; 0.1 ps/frame
+nstenergy               = 100
+nstlog                  = 100
+
+; MISC
+DispCorr                = EnerPres
+pbc                     = xyz
+comm-mode               = Linear
+comm-grps               = System

@@ -1,0 +1,50 @@
+; ---------- npt_relax_ber.mdp ----------
+; Purpose: safe volume relaxation before production NPT
+
+; RUN CONTROL
+integrator              = md
+dt                      = 0.001
+nsteps                  = 1000000        ; 0.5 ns (extend as needed)
+
+; OUTPUT
+nstxout-compressed      = 5000          ; every 5 ps
+nstenergy               = 1000          ; every 1 ps
+nstlog                  = 1000
+nstcalcenergy           = 100
+
+; NEIGHBOR / CUTOFFS / PME
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.2
+coulombtype             = PME
+rcoulomb                = 1.2
+vdwtype                 = Cut-off
+rvdw                    = 1.2
+
+; THERMOSTAT
+tcoupl                  = V-rescale
+tc-grps                 = System
+tau-t                   = 1.0
+ref-t                   = 300
+
+; BAROSTAT (Berendsen for gentle box relaxation)
+pcoupl                  = Berendsen
+pcoupltype              = isotropic
+tau-p                   = 8.0           ; slow scaling for polymers
+ref-p                   = 1.0
+compressibility         = 4.5e-5        ; placeholder; adjust if you have better
+
+; CONSTRAINTS
+constraints             = h-bonds
+constraint-algorithm    = lincs
+lincs-iter              = 2
+lincs-order             = 8
+
+; MISC
+DispCorr                = EnerPres
+pbc                     = xyz
+comm-mode               = Linear
+comm-grps               = System
+
+; VELOCITIES
+gen_vel                 = no            ; continue from NVT checkpoint

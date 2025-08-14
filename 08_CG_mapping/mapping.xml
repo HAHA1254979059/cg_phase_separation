@@ -1,0 +1,527 @@
+<!--
+  File: mapping.xml
+  Purpose: Coarse-graining map for a blend system with two molecule types:
+           - MOLA: PVCN_decamer (head A, middle B, tail C)
+           - MOLB: PTB7-Th_tetramer (head X, middle Y, tail Z)
+  How to validate:
+    1) csg_map --top topol.tpr --trj traj.xtc --out cg-traj.xtc --cg mapping.xml
+    2) csg_map --top topol.tpr --trj conf.gro  --out cg-conf.gro  --cg mapping.xml
+  Note:
+    - Replace the placeholder atom lists (e.g., 1:MOLA:C1 ...) with your actual atoms.
+    - For COM mapping, set <weights> to atomic masses in the same order as in <beads>.
+    - ident must match the all-atom molecule/residue name in your topology.
+    - Non-bonded "type" names control which pair distributions VOTCA computes.
+-->
+
+<!-- ========== Molecule 1: PVCN_decamer (MOLA) ========== -->
+<cg_molecule>
+  <name>PVCN_decamer</name>     <!-- CG molecule name (you can choose freely for CG) -->
+  <ident>MOLA</ident>           <!-- All-atom molecule identifier (must match .tpr/.gro) -->
+
+  <topology>
+    <cg_beads>
+      <!-- Head bead (first repeat unit) -->
+      <cg_bead>
+        <name>A1</name>
+        <type>A</type>                 <!-- Bead type used for NB/Bonded type definitions -->
+        <mapping>com_A</mapping>       <!-- Map name; defined under <maps> -->
+        <beads>
+          <!-- Fill with atoms of the first (head) repeat unit -->
+          <!-- Example form (replace with your actual atom names/numbers): -->
+			1:MOLA:C1 1:MOLA:C2 1:MOLA:C3 1:MOLA:C4 1:MOLA:C5 1:MOLA:C6 1:MOLA:C12 1:MOLA:C14 1:MOLA:C16
+			1:MOLA:C19 1:MOLA:C22 1:MOLA:O17 1:MOLA:O18 1:MOLA:H7 1:MOLA:H8 1:MOLA:H9 1:MOLA:H10 1:MOLA:H11
+			1:MOLA:H13 1:MOLA:H15 1:MOLA:H20 1:MOLA:H21 1:MOLA:H23 1:MOLA:H24
+        </beads>
+      </cg_bead>
+
+      <!-- Middle beads (repeat units 2..9) -->
+      <cg_bead>
+        <name>B2</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #2 -->
+			1:MOLA:C25 1:MOLA:C27 1:MOLA:C29 1:MOLA:C32 1:MOLA:C34 1:MOLA:C36 1:MOLA:C38 1:MOLA:C39
+			1:MOLA:C40 1:MOLA:C42 1:MOLA:C44 1:MOLA:O26 1:MOLA:O33 1:MOLA:H28 1:MOLA:H30 1:MOLA:H31 
+			1:MOLA:H35 1:MOLA:H37 1:MOLA:H41 1:MOLA:H43 1:MOLA:H45 1:MOLA:H46 1:MOLA:H47
+        </beads>
+      </cg_bead>
+
+      <cg_bead>
+        <name>B3</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #3 -->
+			1:MOLA:C48 1:MOLA:C50 1:MOLA:C52 1:MOLA:C55 1:MOLA:C57 1:MOLA:C59 1:MOLA:C61 1:MOLA:C62
+			1:MOLA:C63 1:MOLA:C65 1:MOLA:C67 1:MOLA:O49 1:MOLA:O56 1:MOLA:H51 1:MOLA:H53 1:MOLA:H54
+			1:MOLA:H58 1:MOLA:H60 1:MOLA:H64 1:MOLA:H66 1:MOLA:H68 1:MOLA:H69 1:MOLA:H70
+        </beads>
+      </cg_bead>
+
+      <cg_bead>
+        <name>B4</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #4 -->
+			1:MOLA:C71 1:MOLA:C73 1:MOLA:C75 1:MOLA:C78 1:MOLA:C80 1:MOLA:C82 1:MOLA:C84 1:MOLA:C85
+			1:MOLA:C86 1:MOLA:C88 1:MOLA:C90 1:MOLA:O72 1:MOLA:O79 1:MOLA:H74 1:MOLA:H76 1:MOLA:H77
+			1:MOLA:H81 1:MOLA:H83 1:MOLA:H87 1:MOLA:H89 1:MOLA:H91 1:MOLA:H92 1:MOLA:H93
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B5</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #5 -->
+			1:MOLA:C94 1:MOLA:C96 1:MOLA:C98 1:MOLA:C101 1:MOLA:C103 1:MOLA:C105 1:MOLA:C107 1:MOLA:C108
+			1:MOLA:C109 1:MOLA:C111 1:MOLA:C113 1:MOLA:O95 1:MOLA:O102 1:MOLA:H97 1:MOLA:H99 1:MOLA:H100
+			1:MOLA:H104 1:MOLA:H106 1:MOLA:H110 1:MOLA:H112 1:MOLA:H114 1:MOLA:H115 1:MOLA:H116
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B6</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #6 -->
+			1:MOLA:C117 1:MOLA:C119 1:MOLA:C121 1:MOLA:C124 1:MOLA:C126 1:MOLA:C128 1:MOLA:C130 1:MOLA:C131
+			1:MOLA:C132 1:MOLA:C134 1:MOLA:C136 1:MOLA:O118 1:MOLA:O125 1:MOLA:H120 1:MOLA:H122 1:MOLA:H123
+			1:MOLA:H127 1:MOLA:H129 1:MOLA:H133 1:MOLA:H135 1:MOLA:H137 1:MOLA:H138 1:MOLA:H139
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B7</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #7 -->
+			1:MOLA:C140 1:MOLA:C142 1:MOLA:C144 1:MOLA:C147 1:MOLA:C149 1:MOLA:C151 1:MOLA:C153 1:MOLA:C154
+			1:MOLA:C155 1:MOLA:C157 1:MOLA:C159 1:MOLA:O141 1:MOLA:O148 1:MOLA:H143 1:MOLA:H145 1:MOLA:H146
+			1:MOLA:H150 1:MOLA:H152 1:MOLA:H156 1:MOLA:H158 1:MOLA:H160 1:MOLA:H161 1:MOLA:H162
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B8</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #8 -->
+			1:MOLA:C163 1:MOLA:C165 1:MOLA:C167 1:MOLA:C170 1:MOLA:C172 1:MOLA:C174 1:MOLA:C176 1:MOLA:C177
+			1:MOLA:C178 1:MOLA:C180 1:MOLA:C182 1:MOLA:O164 1:MOLA:O171 1:MOLA:H166 1:MOLA:H168 1:MOLA:H169
+			1:MOLA:H173 1:MOLA:H175 1:MOLA:H179 1:MOLA:H181 1:MOLA:H183 1:MOLA:H184 1:MOLA:H185
+        </beads>
+      </cg_bead>
+	  
+      <cg_bead>
+        <name>B9</name>
+        <type>B</type>
+        <mapping>com_B</mapping>
+        <beads>
+          <!-- All atoms of repeat unit #9 -->
+			1:MOLA:C186 1:MOLA:C188 1:MOLA:C190 1:MOLA:C193 1:MOLA:C195 1:MOLA:C197 1:MOLA:C199 1:MOLA:C200
+			1:MOLA:C201 1:MOLA:C203 1:MOLA:C205 1:MOLA:O187 1:MOLA:O194 1:MOLA:H189 1:MOLA:H191 1:MOLA:H192
+			1:MOLA:H196 1:MOLA:H198 1:MOLA:H202 1:MOLA:H204 1:MOLA:H206 1:MOLA:H207 1:MOLA:H208
+        </beads>
+      </cg_bead>
+
+      <!-- Tail bead (repeat unit 10) -->
+      <cg_bead>
+        <name>C10</name>
+        <type>C</type>
+        <mapping>com_C</mapping>
+        <beads>
+          <!-- All atoms of last (tail) repeat unit -->
+			1:MOLA:C209 1:MOLA:C211 1:MOLA:C213 1:MOLA:C217 1:MOLA:C219 1:MOLA:C221 1:MOLA:C223 1:MOLA:C224
+			1:MOLA:C225 1:MOLA:C227 1:MOLA:C229 1:MOLA:O210 1:MOLA:O218 1:MOLA:H212 1:MOLA:H214 1:MOLA:H215
+			1:MOLA:H216 1:MOLA:H220 1:MOLA:H222 1:MOLA:H226 1:MOLA:H228 1:MOLA:H230 1:MOLA:H231 1:MOLA:H232
+        </beads>
+      </cg_bead>
+    </cg_beads>
+
+    <!-- Non-bonded pairs INSIDE the same molecule type (MOLA). 
+         r-range in nm; tune max/step to your cutoff/accuracy needs. -->
+    <non-bonded>
+      <name>NB_AA</name><type1>A</type1><type2>A</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_AB</name><type1>A</type1><type2>B</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_BB</name><type1>B</type1><type2>B</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_BC</name><type1>B</type1><type2>C</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_AC</name><type1>A</type1><type2>C</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+
+    <!-- Bonded topology INSIDE MOLA -->
+    <cg_bonded>
+      <!-- End bonds -->
+      <bond>
+        <name>bond_head_end</name>
+        <beads>
+          A1 B2
+          B9 C10
+        </beads>
+      </bond>
+
+      <!-- Internal chain bonds -->
+      <bond>
+        <name>bond_chain</name>
+        <beads>
+          B2 B3
+          B3 B4
+          B4 B5
+          B5 B6
+          B6 B7
+          B7 B8
+          B8 B9
+        </beads>
+      </bond>
+
+      <!-- End angles -->
+      <angle>
+        <name>angle_head_end</name>
+        <beads>
+          A1 B2 B3
+          B8 B9 C10
+        </beads>
+      </angle>
+
+      <!-- Internal chain angles -->
+      <angle>
+        <name>angle_chain</name>
+        <beads>
+          B2 B3 B4
+          B3 B4 B5
+          B4 B5 B6
+          B5 B6 B7
+          B6 B7 B8
+          B7 B8 B9
+        </beads>
+      </angle>
+
+      <!-- End dihedrals -->
+      <dihedral>
+        <name>dihedral_head_end</name>
+        <beads>
+          A1 B2 B3 B4
+          B7 B8 B9 C10
+        </beads>
+      </dihedral>
+
+      <!-- Internal chain dihedrals -->
+      <dihedral>
+        <name>dihedral_chain</name>
+        <beads>
+          B2 B3 B4 B5
+          B3 B4 B5 B6
+          B4 B5 B6 B7
+          B5 B6 B7 B8
+          B6 B7 B8 B9
+        </beads>
+      </dihedral>
+    </cg_bonded>
+  </topology>
+
+  <!-- Maps for MOLA (PVCN). For COM, use atomic masses in the same order as in <beads>. -->
+  <maps>
+    <map>
+      <name>com_A</name>
+      <!-- Replace with actual masses of the atoms listed in A1 <beads> -->
+      <weights>12 12 12 12 12 12 12 12 12 12 12 16 16 1 1 1 1 1 1 1 1 1 1 1</weights>
+    </map>
+    <map>
+      <name>com_B</name>
+      <weights>12 12 12 12 12 12 12 12 12 12 12 16 16 1 1 1 1 1 1 1 1 1 1</weights>
+    </map>
+    <map>
+      <name>com_C</name>
+      <weights>12 12 12 12 12 12 12 12 12 12 12 16 16 1 1 1 1 1 1 1 1 1 1 1</weights>
+    </map>
+  </maps>
+</cg_molecule>
+
+<!-- ========== Molecule 2: PTB7-Th_tetramer (MOLB) ========== -->
+<cg_molecule>
+  <name>PTB7Th_tetramer</name>
+  <ident>MOLB</ident>
+
+  <topology>
+    <cg_beads>
+      <!-- Head bead (END_DONOR_UNIT) -->
+      <cg_bead>
+        <name>X1</name>
+        <type>X</type>
+        <mapping>com_X</mapping>
+        <beads>
+          <!-- All atoms of the first (head) repeat unit of PTB7-Th -->
+          1:MOLB:C1 1:MOLB:C2 1:MOLB:C3 1:MOLB:C4 1:MOLB:C5 1:MOLB:C6 1:MOLB:C21 1:MOLB:C23 1:MOLB:C25 1:MOLB:C26 1:MOLB:C7 1:MOLB:C8 1:MOLB:C10 
+		  1:MOLB:C12 1:MOLB:C66 1:MOLB:C69 1:MOLB:C84 1:MOLB:C87 1:MOLB:C71 1:MOLB:C74 1:MOLB:C77 1:MOLB:C80 1:MOLB:C14 1:MOLB:C15 1:MOLB:C17 1:MOLB:C19 
+		  1:MOLB:C91 1:MOLB:C94 1:MOLB:C109 1:MOLB:C112 1:MOLB:C96 1:MOLB:C99 1:MOLB:C102 1:MOLB:C105 1:MOLB:H22 1:MOLB:H28 1:MOLB:H116 1:MOLB:H11 1:MOLB:H13 
+		  1:MOLB:H88 1:MOLB:H89 1:MOLB:H90 1:MOLB:H85 1:MOLB:H86 1:MOLB:H67 1:MOLB:H68 1:MOLB:H70 1:MOLB:H72 1:MOLB:H73 1:MOLB:H75 1:MOLB:H76 1:MOLB:H78 1:MOLB:H79 
+		  1:MOLB:H81 1:MOLB:H82 1:MOLB:H83 1:MOLB:H18 1:MOLB:H20 1:MOLB:H92 1:MOLB:H93 1:MOLB:H95 1:MOLB:H110 1:MOLB:H111 1:MOLB:H113 1:MOLB:H114 1:MOLB:H115 1:MOLB:H97 
+		  1:MOLB:H98 1:MOLB:H100 1:MOLB:H101 1:MOLB:H103 1:MOLB:H104 1:MOLB:H106 1:MOLB:H108 1:MOLB:H107 1:MOLB:S9 1:MOLB:S16 1:MOLB:S24 1:MOLB:S27
+        </beads>
+      </cg_bead>
+
+      <!-- Middle beads (repeat acceptor units) -->
+      <cg_bead>
+        <name>Y2</name>
+        <type>Y</type>
+        <mapping>com_Y</mapping>
+        <beads>
+          1:MOLB:C29 1:MOLB:C30 1:MOLB:C31 1:MOLB:C32 1:MOLB:C33 1:MOLB:C34 1:MOLB:C38 1:MOLB:C41 1:MOLB:C44 1:MOLB:C59 1:MOLB:C62 1:MOLB:C46 1:MOLB:C49 
+		  1:MOLB:C52 1:MOLB:C55 1:MOLB:H42 1:MOLB:H43 1:MOLB:H45 1:MOLB:H60 1:MOLB:H61 1:MOLB:H63 1:MOLB:H64 1:MOLB:H65 1:MOLB:H47 1:MOLB:H48 1:MOLB:H20 
+		  1:MOLB:H51 1:MOLB:H53 1:MOLB:H54 1:MOLB:H56 1:MOLB:H57 1:MOLB:H58 1:MOLB:O39 1:MOLB:O40 1:MOLB:F37 1:MOLB:S35 1:MOLB:S36
+        </beads>
+      </cg_bead>
+	  
+	  <!-- Middle beads (repeat donor units) -->
+      <cg_bead>
+        <name>Z3</name>
+        <type>Z</type>
+        <mapping>com_Z</mapping>
+        <beads>
+		  1:MOLB:C117 1:MOLB:C118 1:MOLB:C120 1:MOLB:C122 1:MOLB:C123 1:MOLB:C124 1:MOLB:C125 1:MOLB:C127 1:MOLB:C132 1:MOLB:C135 1:MOLB:C126 1:MOLB:C130 
+		  1:MOLB:C136 1:MOLB:C138 1:MOLB:C145 1:MOLB:C152 1:MOLB:C161 1:MOLB:C172 1:MOLB:C160 1:MOLB:C169 1:MOLB:C183 1:MOLB:C197 1:MOLB:C128 1:MOLB:C133 
+		  1:MOLB:C140 1:MOLB:C142 1:MOLB:C147 1:MOLB:C155 1:MOLB:C164 1:MOLB:C178 1:MOLB:C163 1:MOLB:C175 1:MOLB:C189 1:MOLB:C200 1:MOLB:H121 1:MOLB:H139 
+		  1:MOLB:H137 1:MOLB:H144 1:MOLB:H150 1:MOLB:H151 1:MOLB:H159 1:MOLB:H171 1:MOLB:H186 1:MOLB:H185 1:MOLB:H170 1:MOLB:H184 1:MOLB:H167 1:MOLB:H168 
+		  1:MOLB:H181 1:MOLB:H182 1:MOLB:H195 1:MOLB:H196 1:MOLB:H202 1:MOLB:H203 1:MOLB:H204 1:MOLB:H141 1:MOLB:H146 1:MOLB:H153 1:MOLB:H154 1:MOLB:H162 
+		  1:MOLB:H176 1:MOLB:H177 1:MOLB:H191 1:MOLB:H192 1:MOLB:H173 1:MOLB:H174 1:MOLB:H187 1:MOLB:H188 1:MOLB:H198 1:MOLB:H199 1:MOLB:H205 1:MOLB:H206 
+		  1:MOLB:H207 1:MOLB:H190 1:MOLB:S119 1:MOLB:S129 1:MOLB:S131 1:MOLB:S134
+        </beads>
+      </cg_bead>
+	  
+	  <cg_bead>
+        <name>Y4</name>
+        <type>Y</type>
+        <mapping>com_Y</mapping>
+        <beads>
+          1:MOLB:C143 1:MOLB:C148 1:MOLB:C156 1:MOLB:C158 1:MOLB:C165 1:MOLB:C166 1:MOLB:C180 1:MOLB:C201 1:MOLB:C210 1:MOLB:C213 1:MOLB:C219 1:MOLB:C212 
+		  1:MOLB:C216 1:MOLB:C222 1:MOLB:C228 1:MOLB:H208 1:MOLB:H209 1:MOLB:H211 1:MOLB:H217 1:MOLB:H218 1:MOLB:H223 1:MOLB:H224 1:MOLB:H225 1:MOLB:H214 
+		  1:MOLB:H215 1:MOLB:H220 1:MOLB:H221 1:MOLB:H226 1:MOLB:H227 1:MOLB:H230 1:MOLB:H231 1:MOLB:H229 1:MOLB:O193 1:MOLB:O194 1:MOLB:F179 1:MOLB:S149 
+		  1:MOLB:S157
+        </beads>
+      </cg_bead>
+	  
+	  <cg_bead>
+        <name>Z5</name>
+        <type>Z</type>
+        <mapping>com_Z</mapping>
+        <beads>
+		  1:MOLB:C232 1:MOLB:C233 1:MOLB:C235 1:MOLB:C237 1:MOLB:C238 1:MOLB:C239 1:MOLB:C240 1:MOLB:C242 1:MOLB:C247 1:MOLB:C250 1:MOLB:C243 1:MOLB:C248 
+		  1:MOLB:C255 1:MOLB:C257 1:MOLB:C262 1:MOLB:C270 1:MOLB:C279 1:MOLB:C293 1:MOLB:C278 1:MOLB:C290 1:MOLB:C304 1:MOLB:C315 1:MOLB:C241 1:MOLB:C245 
+		  1:MOLB:C251 1:MOLB:C253 1:MOLB:C260 1:MOLB:C267 1:MOLB:C276 1:MOLB:C287 1:MOLB:C275 1:MOLB:C284 1:MOLB:C298 1:MOLB:C312 1:MOLB:H236 1:MOLB:H254 
+		  1:MOLB:H256 1:MOLB:H261 1:MOLB:H268 1:MOLB:H269 1:MOLB:H277 1:MOLB:H291 1:MOLB:H292 1:MOLB:H305 1:MOLB:H306 1:MOLB:H307 1:MOLB:H288 1:MOLB:H289 
+		  1:MOLB:H302 1:MOLB:H303 1:MOLB:H313 1:MOLB:H314 1:MOLB:H320 1:MOLB:H321 1:MOLB:H322 1:MOLB:H252 1:MOLB:H259 1:MOLB:H265 1:MOLB:H266 1:MOLB:H274 
+		  1:MOLB:H285 1:MOLB:H286 1:MOLB:H299 1:MOLB:H300 1:MOLB:H301 1:MOLB:H282 1:MOLB:H283 1:MOLB:H296 1:MOLB:H297 1:MOLB:H310 1:MOLB:H311 1:MOLB:H317 
+		  :MOLB:H318 1:MOLB:H319 1:MOLB:S234 1:MOLB:S244 1:MOLB:S246 1:MOLB:S249
+        </beads>
+      </cg_bead>
+
+	  <cg_bead>
+        <name>Y6</name>
+        <type>Y</type>
+        <mapping>com_Y</mapping>
+        <beads>
+          1:MOLB:C258 1:MOLB:C263 1:MOLB:C271 1:MOLB:C273 1:MOLB:C280 1:MOLB:C281 1:MOLB:C295 1:MOLB:C316 1:MOLB:C325 1:MOLB:C328 1:MOLB:C334 1:MOLB:C327 
+		  1:MOLB:C331 1:MOLB:C337 1:MOLB:C343 1:MOLB:H323 1:MOLB:H324 1:MOLB:H326 1:MOLB:H332 1:MOLB:H333 1:MOLB:H338 1:MOLB:H339 1:MOLB:H340 1:MOLB:H329 
+		  1:MOLB:H330 1:MOLB:H335 1:MOLB:H336 1:MOLB:H341 1:MOLB:H342 1:MOLB:H344 1:MOLB:H345 1:MOLB:H346 1:MOLB:O308 1:MOLB:O309 1:MOLB:F294 1:MOLB:S264 
+		  1:MOLB:S272
+        </beads>
+      </cg_bead>
+	  
+	  <cg_bead>
+        <name>Z7</name>
+        <type>Z</type>
+        <mapping>com_Z</mapping>
+        <beads>
+		  1:MOLB:C347 1:MOLB:C348 1:MOLB:C350 1:MOLB:C352 1:MOLB:C353 1:MOLB:C354 1:MOLB:C355 1:MOLB:C357 1:MOLB:C362 1:MOLB:C365 1:MOLB:C356 1:MOLB:C360 
+		  1:MOLB:C366 1:MOLB:C368 1:MOLB:C375 1:MOLB:C382 1:MOLB:C391 1:MOLB:C403 1:MOLB:C390 1:MOLB:C400 1:MOLB:C414 1:MOLB:C428 1:MOLB:C358 1:MOLB:C363 
+		  1:MOLB:C370 1:MOLB:C372 1:MOLB:C377 1:MOLB:C385 1:MOLB:C394 1:MOLB:C409 1:MOLB:C393 1:MOLB:C406 1:MOLB:C420 1:MOLB:C431 1:MOLB:H351 1:MOLB:H369 
+		  1:MOLB:H367 1:MOLB:H374 1:MOLB:H380 1:MOLB:H381 1:MOLB:H389 1:MOLB:H401 1:MOLB:H402 1:MOLB:H415 1:MOLB:H416 1:MOLB:H417 1:MOLB:H398 1:MOLB:H399 
+		  1:MOLB:H412 1:MOLB:H413 1:MOLB:H426 1:MOLB:H427 1:MOLB:H433 1:MOLB:H434 1:MOLB:H435 1:MOLB:H371 1:MOLB:H376 1:MOLB:H383 1:MOLB:H384 1:MOLB:H392 
+		  1:MOLB:H407 1:MOLB:H408 1:MOLB:H421 1:MOLB:H422 1:MOLB:H423 1:MOLB:H404 1:MOLB:H405 1:MOLB:H418 1:MOLB:H419 1:MOLB:H429 1:MOLB:H430 1:MOLB:H436 
+		  1:MOLB:H437 1:MOLB:H438 1:MOLB:S349 1:MOLB:S359 1:MOLB:S364 1:MOLB:S361
+        </beads>
+      </cg_bead>
+
+      <!-- Tail bead (repeat unit 4) -->
+      <cg_bead>
+        <name>W8</name>
+        <type>W</type>
+        <mapping>com_W</mapping>
+        <beads>
+          1:MOLB:C373 1:MOLB:C378 1:MOLB:C386 1:MOLB:C388 1:MOLB:C395 1:MOLB:C396 1:MOLB:C411 1:MOLB:C432 1:MOLB:C441 1:MOLB:C444 1:MOLB:C450 1:MOLB:C443 
+		  1:MOLB:C447 1:MOLB:C453 1:MOLB:C459 1:MOLB:H397 1:MOLB:H439 1:MOLB:H440 1:MOLB:H442 1:MOLB:H448 1:MOLB:H449 1:MOLB:H454 1:MOLB:H455 1:MOLB:H456 
+		  1:MOLB:H445 1:MOLB:H446 1:MOLB:H451 1:MOLB:H452 1:MOLB:H457 1:MOLB:H458 1:MOLB:H460 1:MOLB:H461 1:MOLB:H462 1:MOLB:O424 1:MOLB:O425 1:MOLB:F410 
+		  1:MOLB:S379 1:MOLB:S387
+        </beads>
+      </cg_bead>
+    </cg_beads>
+
+    <!-- Non-bonded pairs INSIDE MOLB -->
+    <non-bonded>
+      <name>NB_XX</name><type1>X</type1><type2>X</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_XY</name><type1>X</type1><type2>Y</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_YY</name><type1>Y</type1><type2>Y</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_YZ</name><type1>Y</type1><type2>Z</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+    <non-bonded>
+      <name>NB_XZ</name><type1>X</type1><type2>Z</type2>
+      <min>0.0</min><max>2.0</max><step>0.01</step>
+    </non-bonded>
+
+    <!-- Bonded topology INSIDE MOLB -->
+    <cg_bonded>
+      <bond>
+        <name>bond_head_end</name>
+        <beads>
+          X1 Y2
+          Z7 W8
+        </beads>
+      </bond>
+
+      <bond>
+        <name>bond_chain</name>
+        <beads>
+          Y2 Z3
+		  Z3 Y4
+		  Y4 Z5
+		  Z5 Y6
+		  Y6 Z7
+        </beads>
+      </bond>
+
+      <angle>
+        <name>angle_head_end_ZYZ</name>
+        <beads>
+          X1 Y2 Z3
+        </beads>
+      </angle>
+	  
+	  <angle>
+        <name>angle_head_end_YZY</name>
+        <beads>
+          Y6 Z7 W8
+        </beads>
+      </angle>
+	  
+	  <angle>
+        <name>angle_chain_YZY</name>
+        <beads>
+          Y2 Z3 Y4
+		  Y4 Z5 Y6
+        </beads>
+      </angle>
+	  
+	  <angle>
+        <name>angle_chain_ZYZ</name>
+        <beads>
+          Z3 Y4 Z5
+		  Z5 Y6 Z7
+        </beads>
+      </angle>
+
+      <dihedral>
+        <name>dihedral_head_end_ZYZY</name>
+        <beads>
+          X1 Y2 Z3 Y4
+        </beads>
+      </dihedral>
+	  
+	  <dihedral>
+        <name>dihedral_head_end_YZYZ</name>
+        <beads>
+          Z5 Y6 Z7 W8
+        </beads>
+      </dihedral>
+	  
+	  <dihedral>
+        <name>dihedral_chain_ZYZY</name>
+        <beads>
+          Z3 Y4 Z5 Y6
+        </beads>
+      </dihedral>
+	  
+	  <dihedral>
+        <name>dihedral_chain_YZYZ</name>
+        <beads>
+          Y2 Z3 Y4 Z5
+		  Y4 Z5 Y6 Z7
+        </beads>
+      </dihedral>
+    </cg_bonded>
+  </topology>
+
+  <!-- Maps for MOLB (PTB7-Th). Replace with proper masses/weights. -->
+  <maps>
+    <map>
+		<name>com_X</name>
+		<weights>
+			12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 1 1 1 1 1 1 1 1 1 
+			1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 32 32 32 32
+		</weights>
+	</map>
+	
+    <map>
+		<name>com_Y</name>
+		<weights>
+			12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 16 16 19 32 32
+		</weights>
+	</map>
+	
+	<map>
+		<name>com_Z</name>
+		<weights>
+			12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 1 1 1 1 1 1 1 1 1 
+			1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 32 32 32 32
+		</weights>
+	</map>
+	
+    <map>
+		<name>com_W</name>
+		<weights>
+			12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 16 16 19 32 32
+		</weights>
+	</map>
+  </maps>
+</cg_molecule>
+
+<!-- ========== Cross-molecule non-bonded pairs (MOLA vs MOLB) ==========
+     Place these anywhere (e.g., appended at end). VOTCA will pool by bead types.
+     This enables computing RDFs/potentials for blend interactions. -->
+<non-bonded><name>NB_AX</name><type1>A</type1><type2>X</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
+<non-bonded><name>NB_AY</name><type1>A</type1><type2>Y</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
+<non-bonded><name>NB_AZ</name><type1>A</type1><type2>Z</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
+<non-bonded><name>NB_BX</name><type1>B</type1><type2>X</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
+<non-bonded><name>NB_BY</name><type1>B</type1><type2>Y</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
+<non-bonded><name>NB_BZ</name><type1>B</type1><type2>Z</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
+<non-bonded><name>NB_CX</name><type1>C</type1><type2>X</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
+<non-bonded><name>NB_CY</name><type1>C</type1><type2>Y</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
+<non-bonded><name>NB_CZ</name><type1>C</type1><type2>Z</type2><min>0.0</min><max>2.0</max><step>0.01</step></non-bonded>
