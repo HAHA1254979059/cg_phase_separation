@@ -44,3 +44,7 @@ dihedral_head_end_ZYZY_ptb7.dist.new
 dihedral_head_end_pvcn.dist.new
 
 mapping文件为:
+mapping_ptb7.xml
+mapping_pvcn.xml
+
+NB开头的是非键相互作用分布，其他的是成键相互作用分布。pvcn.dist.new就是pvnc分子的分布文件，ptb7.dist.new就是ptb7分子的分布文件
