@@ -1,3 +1,9 @@
 07_annealing/box_aa_trj.gro
-07_annealing/box_anneallong_aa.xtc
+07_annealing/box_anneallong_aa_full.xtc
+07_annealing/box_aa_trj.gro
+07_annealing/box_aa_constantT_trj.gro
+07_annealing/box_aa_annealing_trj_repaired.gro
+07_annealing/box_aa_constantT_trj_repaired.gro
 08_CG_mapping/box_aa.xtc
+08_CG_mapping/box_cg.xtc
+08_CG_mapping/box_aa_constantT.gro

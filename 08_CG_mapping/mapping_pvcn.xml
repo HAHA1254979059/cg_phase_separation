@@ -158,7 +158,7 @@
     <cg_bonded>
       <!-- End bonds -->
       <bond>
-        <name>bond_head_end</name>
+        <name>bond_head_end_pvcn</name>
         <beads>
           A1 B2
           B9 C10
@@ -167,7 +167,7 @@
 
       <!-- Internal chain bonds -->
       <bond>
-        <name>bond_chain</name>
+        <name>bond_chain_pvcn</name>
         <beads>
           B2 B3
           B3 B4
@@ -181,7 +181,7 @@
 
       <!-- End angles -->
       <angle>
-        <name>angle_head_end</name>
+        <name>angle_head_end_pvcn</name>
         <beads>
           A1 B2 B3
           B8 B9 C10
@@ -190,7 +190,7 @@
 
       <!-- Internal chain angles -->
       <angle>
-        <name>angle_chain</name>
+        <name>angle_chain_pvcn</name>
         <beads>
           B2 B3 B4
           B3 B4 B5

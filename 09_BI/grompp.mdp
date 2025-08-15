@@ -1,0 +1,29 @@
+; ---- Integrator / run control ----
+integrator      = md
+dt              = 0.01
+nsteps          = 200000
+nstxout         = 0
+nstvout         = 0
+nstenergy       = 1000
+nstlog          = 1000
+
+; ---- Thermostat ----
+tcoupl          = v-rescale
+tc-grps         = System
+tau_t           = 1.0
+ref_t           = 300
+
+; ---- Pressure ----
+pcoupl          = no
+
+; ---- Cutoffs & tables ----
+cutoff-scheme   = Verlet
+coulombtype     = User          ;
+vdwtype         = User          ;
+rcoulomb        = 1.2
+rvdw            = 1.2
+table-extension = 1.0           ;
+
+; ---- Energy groups（与 index.ndx 中组名一致）----
+energygrps      = A B C X Y Z W
+energygrp-table = A A  A B  A C  B B  B C  C C  X X  X Y  X Z  X W  Y Y  Y Z  Y W  Z Z  Z W  W W  A X  A Y  A Z  A W  B X  B Y  B Z  B W  C X  C Y  C Z  C W
