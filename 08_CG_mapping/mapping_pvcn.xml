@@ -203,7 +203,7 @@
 
       <!-- End dihedrals -->
       <dihedral>
-        <name>dihedral_head_end</name>
+        <name>dihedral_head_end_pvcn</name>
         <beads>
           A1 B2 B3 B4
           B7 B8 B9 C10
@@ -212,7 +212,7 @@
 
       <!-- Internal chain dihedrals -->
       <dihedral>
-        <name>dihedral_chain</name>
+        <name>dihedral_chain_pvcn</name>
         <beads>
           B2 B3 B4 B5
           B3 B4 B5 B6

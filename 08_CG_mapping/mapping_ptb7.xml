@@ -204,7 +204,7 @@
     <!-- Bonded topology INSIDE MOLB -->
     <cg_bonded>
       <bond>
-        <name>bond_head_end</name>
+        <name>bond_head_end_ptb7</name>
         <beads>
           X1 Y2
           Z7 W8
@@ -212,7 +212,7 @@
       </bond>
 
       <bond>
-        <name>bond_chain</name>
+        <name>bond_chain_ptb7</name>
         <beads>
           Y2 Z3
 		  Z3 Y4
@@ -223,21 +223,21 @@
       </bond>
 
       <angle>
-        <name>angle_head_end_ZYZ</name>
+        <name>angle_head_end_ZYZ_ptb7</name>
         <beads>
           X1 Y2 Z3
         </beads>
       </angle>
 	  
 	  <angle>
-        <name>angle_head_end_YZY</name>
+        <name>angle_head_end_YZY_ptb7</name>
         <beads>
           Y6 Z7 W8
         </beads>
       </angle>
 	  
 	  <angle>
-        <name>angle_chain_YZY</name>
+        <name>angle_chain_YZY_ptb7</name>
         <beads>
           Y2 Z3 Y4
 		  Y4 Z5 Y6
@@ -245,7 +245,7 @@
       </angle>
 	  
 	  <angle>
-        <name>angle_chain_ZYZ</name>
+        <name>angle_chain_ZYZ_ptb7</name>
         <beads>
           Z3 Y4 Z5
 		  Z5 Y6 Z7
@@ -253,28 +253,28 @@
       </angle>
 
       <dihedral>
-        <name>dihedral_head_end_ZYZY</name>
+        <name>dihedral_head_end_ZYZY_ptb7</name>
         <beads>
           X1 Y2 Z3 Y4
         </beads>
       </dihedral>
 	  
 	  <dihedral>
-        <name>dihedral_head_end_YZYZ</name>
+        <name>dihedral_head_end_YZYZ_ptb7</name>
         <beads>
           Z5 Y6 Z7 W8
         </beads>
       </dihedral>
 	  
 	  <dihedral>
-        <name>dihedral_chain_ZYZY</name>
+        <name>dihedral_chain_ZYZY_ptb7</name>
         <beads>
           Z3 Y4 Z5 Y6
         </beads>
       </dihedral>
 	  
 	  <dihedral>
-        <name>dihedral_chain_YZYZ</name>
+        <name>dihedral_chain_YZYZ_ptb7</name>
         <beads>
           Y2 Z3 Y4 Z5
 		  Y4 Z5 Y6 Z7
